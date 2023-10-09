@@ -1,5 +1,38 @@
 .wrapper {
-    width: 356px;
-    min-height: 1000px;
-    padding: 20px 0 26px;
+    top: 60px;
+    bottom: 0;
+    width: 20%;
+    background: rgba(18, 18, 18, 1);
+    position: fixed;
+    margin-top: 2px;
+    padding: 20px 8px 20px 8px;
+}
+
+.inner {
+    nav {
+        margin-bottom: 8px;
+    }
+
+    a {
+        display: flex;
+        position: relative;
+        align-items: center;
+        padding: 8px;
+        font-size: 1.8rem;
+        font-weight: 700;
+    }
+
+    span {
+        margin-left: 8px;
+        margin-top: 5px;
+    }
+}
+
+.loggin {
+    position: relative;
+    padding: 20px 8px 24px 8px;
+
+    p {
+        margin-bottom: 20px;
+    }
 }

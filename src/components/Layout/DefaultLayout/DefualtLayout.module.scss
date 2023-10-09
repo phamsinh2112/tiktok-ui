@@ -4,7 +4,7 @@
 }
 
 .container {
-    width: 300px;
+    width: 100%;
     min-height: 1000px;
     color: white;
     display: flex;
@@ -12,6 +12,9 @@
 }
 
 .content {
-    min-height: 1000px;
-    background-color: white;
+    min-width: 420px;
+    width: 80%;
+    margin-left: 20%;
+    position: relative;
+    background-color: rgba(18, 18, 18, 1);
 }
