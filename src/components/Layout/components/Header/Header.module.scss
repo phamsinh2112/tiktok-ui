@@ -101,5 +101,168 @@
 }
 
 .action {
-    width: 100px;
+    align-items: center;
+    display: flex;
+}
+
+.add-icon {
+    margin-right: 8px;
+}
+
+.Application {
+    width: 48px;
+    height: 48px;
+    align-items: center;
+    cursor: pointer;
+    display: flex;
+    margin-left: 20px;
+}
+
+.icon-more {
+    margin-left: 10px;
+    width: 20px;
+    height: 20px;
+}
+
+.Apper {
+    width: 200px;
+    margin-right: 20px;
+    position: relative;
+    &::after {
+        content: '';
+        position: absolute;
+        border: 20px solid;
+        border-color: transparent transparent rgb(37, 37, 37) transparent;
+        top: -28px;
+        right: 35px;
+    }
+}
+
+.inner-Apper {
+    padding: 20px 20px 16px;
+}
+.laptop {
+    width: 116px;
+    height: 100px;
+    display: block;
+    margin: auto;
+    color: rgba(255, 255, 255, 0.6);
+}
+
+.app-title {
+    display: block;
+    text-align: center;
+    font-weight: 700;
+    font-size: 1.6rem;
+    margin-top: 8px;
+    color: rgba(255, 255, 255, 0.6);
+    margin-bottom: 12px;
+}
+.app-download {
+    display: flex;
+    margin-top: 12px;
+    cursor: pointer;
+}
+.app-download span {
+    font-size: 1.2rem;
+    color: rgba(255, 255, 255, 0.2);
+    text-align: center;
+}
+
+.icon-app-download {
+    font-size: 1.2rem;
+    color: rgba(255, 255, 255, 0.2);
+    margin: auto;
+}
+
+.icon-more {
+    margin-right: 15px;
+}
+.more-setting {
+    margin-right: 10px;
+    margin-top: 6px;
+    cursor: pointer;
+    &::after {
+        content: '';
+        position: absolute;
+        border: 20px solid;
+        border-color: transparent transparent rgb(37, 37, 37) transparent;
+        top: -24px;
+        right: 22px;
+    }
+}
+
+.more-inner ul {
+    list-style: none;
+    min-width: 223px;
+    font-size: 1.6rem;
+    font-weight: 600;
+    padding-bottom: 8px;
+    line-height: 21px;
+}
+
+.more-inner a {
+    padding: 10px 8px 10px 16px;
+    display: block;
+    &:hover {
+        background-color: rgba(255, 255, 255, 0.04);
+    }
+}
+
+.icon-setting {
+    margin-right: 8px;
+    width: 18px;
+    height: 18px;
+    flex: 0 0 20px;
+}
+
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 44px;
+    height: 24px;
+    left: 95px;
+    top: -3px;
+}
+
+.switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+    color: black;
+    &:checked + .slider-round {
+        background-color: #ccc;
+    }
+    &:focus + .slider-round {
+        box-shadow: 0 0 1px #ccc;
+    }
+    &:checked + .slider-round:before {
+        transform: translate(-200%, -50%);
+    }
+}
+.slider-round {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgb(11, 224, 155);
+    -webkit-transition: 0.4s;
+    transition: 0.4s;
+    border-radius: 34px;
+    &::before {
+        position: absolute;
+        content: '';
+        height: 20px;
+        width: 20px;
+        left: calc(100% - 2px);
+        top: 50%;
+        transform: translate(-100%, -50%);
+        background-color: white;
+        -webkit-transition: 0.4s;
+        transition: all 0.4s cubic-bezier(0.075, 0.82, 0.165, 1) 0s;
+        border-radius: 50%;
+        box-shadow: rgba(0, 0, 0, 0.15) 0px 1px 2px;
+    }
 }
