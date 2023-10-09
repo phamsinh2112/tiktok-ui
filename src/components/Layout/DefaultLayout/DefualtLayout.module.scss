@@ -12,9 +12,11 @@
 }
 
 .content {
-    min-width: 420px;
-    width: 80%;
-    margin-left: 20%;
     position: relative;
+    width: 100%;
+    min-width: 420px;
     background-color: rgba(18, 18, 18, 1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
