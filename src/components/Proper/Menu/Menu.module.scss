@@ -1,0 +1,52 @@
+.setting {
+    position: relative;
+    width: 284px;
+    &::after {
+        content: '';
+        border: 16px solid;
+        border-color: transparent transparent rgb(37, 37, 37) transparent;
+        position: absolute;
+        top: -22px;
+        right: 3px;
+    }
+}
+
+.menu-popper {
+    padding-bottom: 8px;
+}
+
+.menu-item {
+    width: 100%;
+    border-radius: 0px;
+
+    &.separate {
+        border-top: 1px solid rgba(255, 255, 255, 0.12);
+    }
+    &:hover {
+        background-color: rgba(255, 255, 255, 0.04);
+    }
+}
+
+.header {
+    position: relative;
+    height: 50px;
+    margin-top: -8px;
+}
+
+.back-btn {
+    width: 50px;
+    height: 100%;
+    background-color: transparent;
+    cursor: pointer;
+}
+
+.header-title {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.icon {
+    color: white;
+}

@@ -1,9 +1,5 @@
-import { useEffect, useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
-    faCircleXmark,
-    faCircleNotch,
-    faMagnifyingGlass,
     faAdd,
     faEllipsisVertical,
     faAngleRight,
@@ -13,140 +9,226 @@ import {
     faCircleQuestion,
     faKeyboard,
     faMoon,
+    faUser,
+    faHeart,
+    faChartLine,
+    faGear,
+    faRightFromBracket,
 } from '@fortawesome/free-solid-svg-icons';
 import { Wrapper as PopperWraper } from '~/components/Proper';
 import styles from './Header.module.scss';
 import classNames from 'classnames/bind';
 import images from '~/assets/images';
-import Tippy from '@tippyjs/react/headless';
-import AccountItem from '~/components/AccountItem';
+import Tippy from '@tippyjs/react';
+import HeadlessTippy from '@tippyjs/react/headless';
+import 'tippy.js/dist/tippy.css';
 import Button from '~/components/Button';
+import Menu from '~/components/Proper/Menu';
+import { faBitcoin } from '@fortawesome/free-brands-svg-icons';
+import Search from '../Search';
 const cx = classNames.bind(styles);
+const MENU_ITEMS = [
+    {
+        icon: <FontAwesomeIcon icon={faLightbulb} />,
+        title: 'Trung tâm nhà sáng tạo LIVE',
+    },
+    {
+        icon: <FontAwesomeIcon icon={faLanguage} />,
+        title: 'Tiếng Việt',
+        children: {
+            title: 'Ngôn ngữ',
+            data: [
+                {
+                    title: 'Tiếng Việt (Việt Nam)',
+                },
+                {
+                    title: 'العربية',
+                },
+                {
+                    title: 'বাঙ্গালি (ভারত)',
+                },
+                {
+                    title: 'Cebuano (Pilipinas)',
+                },
+                {
+                    title: 'Čeština (Česká republika)',
+                },
+                {
+                    title: 'Deutsch',
+                },
+                {
+                    title: 'Ελληνικά (Ελλάδα)',
+                },
+                {
+                    title: 'English',
+                },
+                {
+                    title: 'Español',
+                },
+                {
+                    title: 'Suomi (Suomi)',
+                },
+                {
+                    title: 'Filipino (Pilipinas)',
+                },
+                {
+                    title: 'Français',
+                },
+            ],
+        },
+    },
+    {
+        icon: <FontAwesomeIcon icon={faCircleQuestion} />,
+        title: 'Phản hồi và trợ giúp',
+    },
+    {
+        icon: <FontAwesomeIcon icon={faKeyboard} />,
+        title: 'Phím tắt trên bàn phím',
+    },
+    {
+        icon: <FontAwesomeIcon icon={faMoon} />,
+        title: 'Chế độ tối',
+        nightlight: (
+            <label className={cx('switch')}>
+                <input type="checkbox"></input>
+                <span className={cx('slider-round')}></span>
+            </label>
+        ),
+    },
+];
+const userMenu = [
+    {
+        icon: <FontAwesomeIcon icon={faUser} />,
+        title: 'Xem hồ sơ',
+    },
+    {
+        icon: <FontAwesomeIcon icon={faHeart} />,
+        title: 'Yêu thích',
+    },
+    {
+        icon: <FontAwesomeIcon icon={faBitcoin} />,
+        title: 'Nhận xu',
+    },
+    {
+        icon: <FontAwesomeIcon icon={faChartLine} />,
+        title: 'Xem phân tích',
+    },
+    {
+        icon: <FontAwesomeIcon icon={faGear} />,
+        title: 'Cài đặt',
+    },
+    ...MENU_ITEMS,
+    {
+        icon: <FontAwesomeIcon icon={faRightFromBracket} />,
+        title: 'Đăng xuất',
+        separate: true,
+    },
+];
 function Header() {
-    const [searchResult, setSearchResult] = useState([]);
-    useEffect(() => {
-        setTimeout(() => {
-            setSearchResult([1, 2, 3]);
-        }, 0);
-    }, []);
+    const currentUser = true;
     return (
         <header className={cx('wrapper')}>
             <div className={cx('inner')}>
                 <div className={cx('logo')}>
                     <img src={images.logo} alt="tiktok"></img>
                 </div>
-                <Tippy
-                    interactive
-                    // visible={searchResult.length > 0}
-                    render={(attr) => (
-                        <div className={cx('search-result')} tabIndex="-1" {...attr}>
-                            <PopperWraper>
-                                <h4 className={cx('search-title')}>Tài khoản</h4>
-                                <AccountItem></AccountItem>
-                                <AccountItem></AccountItem>
-                                <AccountItem></AccountItem>
-                                <AccountItem></AccountItem>
-                            </PopperWraper>
-                        </div>
-                    )}
-                >
-                    <div className={cx('search')}>
-                        <input placeholder="Tìm kiếm" spellCheck={false}></input>
-                        <button className={cx('search-delete')}>
-                            <FontAwesomeIcon icon={faCircleXmark}></FontAwesomeIcon>
-                        </button>
-                        <FontAwesomeIcon className={cx('loading')} icon={faCircleNotch}></FontAwesomeIcon>
-                        <button className={cx('search-btn')}>
-                            <FontAwesomeIcon icon={faMagnifyingGlass}></FontAwesomeIcon>
-                        </button>
-                    </div>
-                </Tippy>
+                <Search></Search>
                 <div className={cx('action')}>
-                    <Button>
-                        <FontAwesomeIcon className={cx('add-icon')} icon={faAdd}></FontAwesomeIcon>Tải lên
-                    </Button>
-                    <Button primary>Đăng Nhập</Button>
-                    <Tippy
-                        interactive
-                        render={(attr) => (
-                            <div className={cx('Apper')} tabIndex="-1" {...attr}>
-                                <PopperWraper>
-                                    <div className={cx('inner-Apper')}>
-                                        <FontAwesomeIcon className={cx('laptop')} icon={faLaptop} />
-                                        <span className={cx('app-title')}>Ứng dụng tiktok cho Laptop</span>
-                                        <Button primary medium>
-                                            Tải về
-                                        </Button>
-                                        <div className={cx('app-download')}>
-                                            <span>Thay vào đó, tải ứng dụng di động về</span>
-                                            <FontAwesomeIcon className={cx('icon-app-download')} icon={faAngleRight} />
-                                        </div>
-                                    </div>
-                                </PopperWraper>
-                            </div>
-                        )}
-                    >
-                        <div className={cx('Application')}>
-                            <img src={images.App}></img>
-                        </div>
-                    </Tippy>
-                    <Tippy
-                        interactive
-                        render={(attr) => (
-                            <div className={cx('more-setting')} {...attr} tabIndex="1">
-                                <PopperWraper>
-                                    <div className={cx('more-inner')}>
-                                        <ul>
-                                            <li>
-                                                <a>
+                    {currentUser ? (
+                        <>
+                            <Button>
+                                <FontAwesomeIcon className={cx('add-icon')} icon={faAdd}></FontAwesomeIcon>Tải lên
+                            </Button>
+                            <HeadlessTippy
+                                delay={0}
+                                interactive
+                                render={(attr) => (
+                                    <div className={cx('Apper')} tabIndex="-1" {...attr}>
+                                        <PopperWraper>
+                                            <div className={cx('inner-Apper')}>
+                                                <FontAwesomeIcon className={cx('laptop')} icon={faLaptop} />
+                                                <span className={cx('app-title')}>Ứng dụng tiktok cho Laptop</span>
+                                                <Button primary medium>
+                                                    Tải về
+                                                </Button>
+                                                <div className={cx('app-download')}>
+                                                    <span>Thay vào đó, tải ứng dụng di động về</span>
                                                     <FontAwesomeIcon
-                                                        className={cx('icon-setting')}
-                                                        icon={faLightbulb}
+                                                        className={cx('icon-app-download')}
+                                                        icon={faAngleRight}
                                                     />
-                                                    <span>Trung tâm nhà sáng tạo LIVE</span>
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a>
-                                                    <FontAwesomeIcon className={cx('icon-setting')} icon={faLanguage} />
-                                                    <span>Tiếng Việt</span>
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a>
-                                                    <FontAwesomeIcon
-                                                        className={cx('icon-setting')}
-                                                        icon={faCircleQuestion}
-                                                    />
-                                                    <span>Phản hồi và trợ giúp</span>
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a>
-                                                    <FontAwesomeIcon className={cx('icon-setting')} icon={faKeyboard} />
-                                                    <span>Phím tắt trên bàn phím</span>
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a>
-                                                    <FontAwesomeIcon className={cx('icon-setting')} icon={faMoon} />
-                                                    <span>Chế độ tối</span>
-                                                    <label className={cx('switch')}>
-                                                        <input type="checkbox"></input>
-                                                        <span className={cx('slider-round')}></span>
-                                                    </label>
-                                                </a>
-                                            </li>
-                                        </ul>
+                                                </div>
+                                            </div>
+                                        </PopperWraper>
                                     </div>
-                                </PopperWraper>
-                            </div>
-                        )}
-                    >
-                        <div className={cx('icon-more')}>
-                            <FontAwesomeIcon icon={faEllipsisVertical}></FontAwesomeIcon>
-                        </div>
-                    </Tippy>
+                                )}
+                            >
+                                <div className={cx('Application')}>
+                                    <img src={images.App}></img>
+                                </div>
+                            </HeadlessTippy>
+
+                            <Tippy content="Tin nhắn" interactive>
+                                <a href="" className={cx('Mail-mess')}>
+                                    <img style={{ width: '1.5em' }} src={images.Mess}></img>
+                                </a>
+                            </Tippy>
+
+                            <Tippy content="Hội thoại">
+                                <a className={cx('Mail-mess')}>
+                                    <img src={images.Mail}></img>
+                                    <span className={cx('badge')}>12</span>
+                                </a>
+                            </Tippy>
+                            <Menu items={userMenu}>
+                                <img
+                                    src="https://p16-sign-sg.tiktokcdn.com/aweme/100x100/tos-alisg-avt-0068/bf50bc06f278bb1f8ff40368b6382906.jpeg?x-expires=1697097600&x-signature=vLLS1EncxlWK4oef%2FksXdPPzr6w%3D"
+                                    className={cx('user-avatar')}
+                                    alt="Pham Sinh"
+                                />
+                            </Menu>
+                        </>
+                    ) : (
+                        <>
+                            <Button>
+                                <FontAwesomeIcon className={cx('add-icon')} icon={faAdd}></FontAwesomeIcon>Tải lên
+                            </Button>
+                            <Button primary>Đăng Nhập</Button>
+                            <HeadlessTippy
+                                delay={[0, 700]}
+                                interactive
+                                render={(attr) => (
+                                    <div className={cx('Apper')} tabIndex="-1" {...attr}>
+                                        <PopperWraper>
+                                            <div className={cx('inner-Apper')}>
+                                                <FontAwesomeIcon className={cx('laptop')} icon={faLaptop} />
+                                                <span className={cx('app-title')}>Ứng dụng tiktok cho Laptop</span>
+                                                <Button primary medium>
+                                                    Tải về
+                                                </Button>
+                                                <div className={cx('app-download')}>
+                                                    <span>Thay vào đó, tải ứng dụng di động về</span>
+                                                    <FontAwesomeIcon
+                                                        className={cx('icon-app-download')}
+                                                        icon={faAngleRight}
+                                                    />
+                                                </div>
+                                            </div>
+                                        </PopperWraper>
+                                    </div>
+                                )}
+                            >
+                                <div className={cx('Application')}>
+                                    <img src={images.App}></img>
+                                </div>
+                            </HeadlessTippy>
+                            <Menu items={MENU_ITEMS}>
+                                <div className={cx('icon-more')}>
+                                    <FontAwesomeIcon icon={faEllipsisVertical}></FontAwesomeIcon>
+                                </div>
+                            </Menu>
+                        </>
+                    )}
                 </div>
             </div>
         </header>
