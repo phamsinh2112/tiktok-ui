@@ -8,6 +8,12 @@
     --search-height: 46px;
     --search-top-spacer: 9px;
     margin-bottom: 3px;
+    position: fixed;
+    right: 0;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+    align-items: center;
 }
 
 .inner {

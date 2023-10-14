@@ -15,6 +15,7 @@ import {
     faGear,
     faRightFromBracket,
 } from '@fortawesome/free-solid-svg-icons';
+import { Link } from 'react-router-dom';
 import { Wrapper as PopperWraper } from '~/components/Proper';
 import styles from './Header.module.scss';
 import classNames from 'classnames/bind';
@@ -26,6 +27,7 @@ import Button from '~/components/Button';
 import Menu from '~/components/Proper/Menu';
 import { faBitcoin } from '@fortawesome/free-brands-svg-icons';
 import Search from '../Search';
+import routesConfig from '~/config/routes';
 const cx = classNames.bind(styles);
 const MENU_ITEMS = [
     {
@@ -130,7 +132,9 @@ function Header() {
         <header className={cx('wrapper')}>
             <div className={cx('inner')}>
                 <div className={cx('logo')}>
-                    <img src={images.logo} alt="tiktok"></img>
+                    <Link to={routesConfig.home}>
+                        <img src={images.logo} alt="tiktok"></img>
+                    </Link>
                 </div>
                 <Search></Search>
                 <div className={cx('action')}>

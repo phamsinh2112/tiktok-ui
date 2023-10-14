@@ -3,6 +3,7 @@ const images = {
     App: require('~/assets/images/App.svg').default,
     Mess: require('~/assets/images/Mess.svg').default,
     Mail: require('~/assets/images/Mail.svg').default,
+    Sound: require('~/assets/images/sound.svg').default,
 };
 
 export default images;

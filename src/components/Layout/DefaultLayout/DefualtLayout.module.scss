@@ -1,14 +1,20 @@
 .wrapper {
     display: flex;
     flex-direction: column;
+    min-height: 100vh;
+    justify-content: start;
 }
 
 .container {
-    width: 100%;
-    min-height: 1000px;
+    margin-top: 60px;
+    width: 100vw;
+    max-width: 100%;
+    align-items: center;
     color: white;
     display: flex;
+    flex: 1 1 auto;
     background-color: rgba(18, 18, 18, 1);
+    -webkit-box-pack: justify;
 }
 
 .content {
@@ -18,5 +24,10 @@
     background-color: rgba(18, 18, 18, 1);
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: flex-start;
+    flex-shrink: 1;
+    -webkit-box-align: center;
+    flex-direction: column;
+    -webkit-box-pack: start;
+    margin: 0 auto;
 }

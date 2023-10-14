@@ -12,6 +12,7 @@ function Button({
     large = false,
     children,
     onClick,
+    className,
 }) {
     let Comp = 'button';
     const props = {
@@ -30,6 +31,7 @@ function Button({
         small,
         medium,
         large,
+        [className]: className,
     });
     return (
         <Comp className={classes} {...props}>
