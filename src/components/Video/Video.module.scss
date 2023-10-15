@@ -1,0 +1,141 @@
+.video {
+    height: calc(450px + (100vw - 768px) / 1152 * 200);
+    position: relative;
+    background-size: cover;
+    cursor: pointer;
+    margin-right: 20px;
+}
+
+.actionitem {
+    display: flex;
+    flex-direction: column;
+}
+
+.videoCard {
+    position: relative;
+
+    &:hover {
+        .play {
+            display: block;
+        }
+        .sound {
+            display: block;
+        }
+        .more {
+            display: block;
+        }
+    }
+}
+
+.video-play {
+    width: 100%;
+    height: calc(450px + (100vw - 768px) / 1152 * 200);
+    border-radius: 8px;
+}
+.play {
+    position: absolute;
+    bottom: 35px;
+    left: 28px;
+    font-size: 2rem;
+    display: none;
+}
+
+.sound {
+    position: absolute;
+    bottom: 40px;
+    right: 25px;
+    font-size: 2rem;
+    display: none;
+}
+
+.control-volumn {
+    width: 24px;
+    height: 64px;
+    margin: 8px 7px 0px;
+    position: relative;
+    cursor: initial;
+    background: rgba(22, 24, 35, 0.34);
+    border-radius: 32px;
+    display: none;
+}
+
+.control-progress {
+    width: 2px;
+    height: 48px;
+    background-color: rgba(255, 255, 255, 0.34);
+    position: absolute;
+    left: 11px;
+    top: 8px;
+    bottom: 8px;
+    cursor: pointer;
+    border-radius: 4px;
+}
+
+.control-circle {
+    width: 12px;
+    height: 12px;
+    background-color: rgb(255, 255, 255);
+    border-radius: 12px;
+    position: absolute;
+    left: 6px;
+    bottom: 8px;
+    cursor: pointer;
+    z-index: 1;
+}
+
+.control-bar {
+    width: 2px;
+    height: 48px;
+    background-color: rgb(255, 255, 255);
+    position: absolute;
+    left: -8px;
+    bottom: 8px;
+    cursor: pointer;
+    transform: scaleY(0);
+    transform-origin: center bottom;
+    border-radius: 4px;
+}
+
+.video-sound {
+    display: flex;
+    justify-content: center;
+}
+.control {
+}
+
+.more {
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    font-size: 2rem;
+    display: none;
+}
+
+.inner {
+}
+.more-inner {
+    padding-bottom: 8px;
+    width: 200px;
+    position: relative;
+}
+
+.item {
+    &::before {
+        content: '';
+        border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+        width: 170px;
+        bottom: 47px;
+        position: absolute;
+        position: absolute;
+    }
+    &:hover {
+        background-color: rgba(255, 255, 255, 0.08);
+    }
+    width: 100%;
+    padding: 8px 15px;
+}
+
+.text-item {
+    margin-left: 10px;
+    font-weight: 500;
+}
